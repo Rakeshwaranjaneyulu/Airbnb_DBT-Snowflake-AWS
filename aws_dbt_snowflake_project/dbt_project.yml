@@ -17,9 +17,15 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
-
 models:
   aws_dbt_snowflake_project:
     bronze:
-      +materialized: table
       +schema: bronze
+      +materialized: table
+    silver:
+      +schema: silver
+      +materialized: table
+    gold:
+      +schema: gold
+      +materialized: table
+      

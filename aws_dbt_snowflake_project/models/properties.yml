@@ -1,4 +1,11 @@
+
+
 models:
-  - name: bronze
-    config:
-      materialized: table  
+  - name: bronze_bookings
+    description: Bronze layer bookings data
+
+  - name: bronze_hosts
+    description: Bronze layer hosts data
+
+  - name: bronze_listings
+    description: Bronze layer listings data
