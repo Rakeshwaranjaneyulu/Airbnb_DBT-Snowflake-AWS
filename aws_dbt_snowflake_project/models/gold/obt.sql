@@ -1,18 +1,18 @@
 {% set configs = [
     {
         "table": "AIRBNB.SILVER.SILVER_BOOKINGS",
-        "columns": "silver_bookings.BOOKING_ID, silver_bookings.LISTING_ID, silver_bookings.BOOKING_DATE, silver_bookings.BOOKING_STATUS, silver_bookings.CREATED_AT",
+        "columns": "silver_bookings.*",
         "alias": "silver_bookings"
     },
-    {
-        "table": "AIRBNB.SILVER.SILVER_LISTINGS",
-        "columns": "silver_listings.HOST_ID, silver_listings.PROPERTY_TYPE, silver_listings.ROOM_TYPE, silver_listings.CITY, silver_listings.COUNTRY",
-        "alias": "silver_listings",
-        "join_condition": "silver_bookings.listing_id = silver_listings.listing_id"
-    },
+{
+    "table": ref('silver_listings'),
+    "columns": "silver_listings.HOST_ID, silver_listings.PROPERTY_TYPE, silver_listings.ROOM_TYPE, silver_listings.CITY, silver_listings.COUNTRY, silver_listings.ACCOMMODATES, silver_listings.BEDROOMS, silver_listings.BATHROOMS, silver_listings.PRICE_PER_NIGHT, silver_listings.PRICE_PER_NIGHT_TAG, silver_listings.CREATED_AT AS LISTING_CREATED_AT",
+    "alias": "silver_listings",
+    "join_condition": "silver_bookings.listing_id = silver_listings.listing_id"
+},
     {
         "table": "AIRBNB.SILVER.SILVER_HOSTS",
-        "columns": "silver_hosts.HOST_NAME, silver_hosts.HOST_SINCE, silver_hosts.IS_SUPERHOST, silver_hosts.RESPONSE_RATE",
+        "columns": "silver_hosts.HOST_NAME, silver_hosts.HOST_SINCE, silver_hosts.IS_SUPERHOST,silver_hosts.RESPONSE_RATE_QUALITY, silver_hosts.CREATED_AT AS HOST_CREATED_AT, silver_hosts.RESPONSE_RATE",
         "alias": "silver_hosts",
         "join_condition": "silver_listings.host_id = silver_hosts.host_id"
     }

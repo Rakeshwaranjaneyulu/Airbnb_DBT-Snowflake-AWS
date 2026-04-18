@@ -6,5 +6,6 @@
     "files.associations": {
         "*.sql": "jinja-sql",
         "*.yml": "jinja-yml"
-    }
+    },
+    "dbt.perspectiveTheme": "Vintage"
 }

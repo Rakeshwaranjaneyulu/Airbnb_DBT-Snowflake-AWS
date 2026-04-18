@@ -14,5 +14,6 @@ SELECT
     COUNTRY,
     ACCOMMODATES,
     PRICE_PER_NIGHT,
+    CREATED_AT,
     {{ tag('PRICE_PER_NIGHT') }} AS PRICE_PER_NIGHT_TAG
 FROM {{ ref('bronze_listings') }}
